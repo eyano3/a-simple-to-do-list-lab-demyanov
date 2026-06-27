@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class TaskList {
     }
 
     public List<Task> all() {
+        printTasks(tasks);
         return tasks;
     }
 
@@ -26,6 +28,7 @@ public class TaskList {
             }
         }
 
+        printTasks(completeTasks);
         return completeTasks;
     }
 
@@ -38,10 +41,22 @@ public class TaskList {
             }
         }
 
+        printTasks(incompleteTasks);
         return incompleteTasks;
     }
 
     public void clear() {
         tasks.clear();
     }
+
+    private void printTasks(List<Task> tasksToPrint) {
+        if (tasksToPrint.isEmpty()) {
+            System.out.println("There are no applicable tasks.");
+        }
+
+        for (int i = 0; i < tasksToPrint.size(); i++) {
+            System.out.println((i + 1) + ". " + tasksToPrint.get(i).getDescription());
+        }
+    }
 }
+
